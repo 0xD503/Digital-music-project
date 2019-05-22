@@ -1,6 +1,6 @@
-`define DataWidth		8
+/*`define DataWidth		8
 `define AddressWidth	32
-`define WordBuferSize	64
+`define WordBuferSize	64*/
 
 
 module ShiftRegister
@@ -187,3 +187,4 @@ module I2S_Master_Receiver
 	assign s_WEnableDataRight = s_WSD & s_WSP;
 
 endmodule
+
