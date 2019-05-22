@@ -30,7 +30,7 @@ module AudioCodec_Control
 	//	If CLK = 50 MHz then
 	//	s_ClockSelect_Counter[11]	= 390625 Hz (I2C High-speed (400 KHz))
 	//	s_ClockSelect_Counter[13]	= 97656 Hz (I2C Low-speed (100 KHz))
-	//	s_ClockSelect_Counter[14]	= 390625 Hz (I2C audio frequency 44.1 KHz)
+	//	s_ClockSelect_Counter[14]	= 48828 Hz (I2C audio frequency 44.1 KHz)
 	
 	assign o_XCK = s_ClockSelect_Counter[14];			//	???????????
 	assign io_BitSCLK = s_ClockSelect_Counter[14];	//	I2S bit stream clock == 48828 Hz (44.1 KHz)
