@@ -59,18 +59,6 @@ module AudioCodec_Control
 
 endmodule
 
-module CountClock
-	(input logic		i_CLK, i_NRESET,
-	output logic[15:0]	o_Count);
-
-
-	always_ff	@(posedge i_CLK, negedge i_NRESET)
-	begin
-		if (~i_NRESET)	o_Count = 16'd0;
-		else			o_Count = o_Count + 16'd1;
-	end
-
-endmodule
 
 module I2C_Interface_Clocker
 	(input logic	i_CLK, i_NRESET,
@@ -169,39 +157,30 @@ module AudioCodec_Table
 	always_comb
 	begin
 		case (i_Address)
-		//5'd0:		o_Data = 8'b00110100;		//	I2C device address, write mode
 		5'd1:		o_Data = 8'h1E;				//	Audiocodec register address
 		5'd2:		o_Data = 8'b00000000;		//	Software reset
 
-		//5'd3:		o_Data = 8'b00110100;		//	I2C device address, write mode
 		5'd4:	o_Data = 8'h04;				//	Audiocodec register address
 		5'd5:		o_Data = 8'b01111111;		//	+6 dB	Left Channel DAC Volume
 
-		//5'd6:		o_Data = 8'b00110100;		//	I2C device address, write mode
 		5'd7:		o_Data = 8'h06;				//	Audiocodec register address
 		5'd8:		o_Data = 8'b01111111;		//	+6 dB	Right Channel DAC Volume
 
-		//5'd9:		o_Data = 8'b00110100;		//	I2C device address, write mode
 		5'd10:		o_Data = 8'h08;				//	Audiocodec register address
 		5'd11:		o_Data = 8'b00010000;		//	Sidetone disable, DAC selected, Bypass disabled, etc
 
-		//5'd12:		o_Data = 8'b00110100;		//	I2C device address, write mode
 		5'd13:	o_Data = 8'h0A;				//	Audiocodec register address
 		5'd14:		o_Data = 8'b00000100;		//	No MUTE, 44.1 kHz
 
-		//5'd15:		o_Data = 8'b00110100;		//	I2C device address, write mode
 		5'd16:		o_Data = 8'h0C;				//	Audiocodec register address
 		5'd17:	o_Data = 8'b00000111;		//	Power-down ADC, Microphone, LineIn
 
-		//5'd18:		o_Data = 8'b00110100;		//	I2C device address, write mode
 		5'd19:		o_Data = 8'h0E;				//	Audiocodec register address
 		5'd20:	o_Data = 8'b00000010;		//	Normal mope operation, Slave Mode, Data-word length = 16 bits, I2S Interface mode
 
-		//5'd21:		o_Data = 8'b00110100;		//	I2C device address, write mode
 		5'd22:		o_Data = 8'h10;				//	Audiocodec register address
 		5'd23:		o_Data = 8'b0x100000;		//(1010 or 1000)//	Core clock, Core CLK = MCLK, BCLK = (MCLK / 4), 256 fs based clock, normal mode (not USB) 
 
-		//5'd24:		o_Data = 8'b00110100;		//	I2C device address, write mode
 		5'd25:		o_Data = 8'h12;				//	Audiocodec register address
 		5'd26:		o_Data = 8'b00000001;		//	Activate digital core
 
